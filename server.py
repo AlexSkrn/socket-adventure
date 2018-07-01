@@ -217,7 +217,7 @@ class Server(object):
                       'move': self.move,
                       'quit': self.quit
                       }
-        buffer_list = self.input_buffer.split()  # Lost '\n'. Any need for it?
+        buffer_list = self.input_buffer.split()
         if buffer_list[0] in route_dict.keys():
             route_dict[buffer_list[0]](' '.join(buffer_list[1:]))
 
@@ -235,7 +235,7 @@ class Server(object):
 
         # pass
         # Specs at the beginning say it should not end in " + b'\n'", right?
-        out_msg = b'OK! ' + self.output_buffer.encode('utf-8')
+        out_msg = b'OK! ' + self.output_buffer.encode('utf-8') + b'\n'
         self.client_connection.sendall(out_msg)
 
 
